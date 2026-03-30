@@ -32,7 +32,7 @@ export async function scrapeFSS() {
         });
       }
       if (results.length > 0) break;
-    } catch(e) { console.log('[FSS] RSS 실패: ' + e.message); }
+    } catch(e: any) { console.log('[FSS] RSS 실패: ' + e.message); }
   }
 
   // 시도 2: 웹 크롤링 fallback
@@ -57,7 +57,7 @@ export async function scrapeFSS() {
           category: '감독규정', status: '공표', context: '', publishedAt: new Date(),
         });
       }
-    } catch(e) { console.error('[FSS] 웹 fallback 실패:', e.message); }
+    } catch(e: any) { console.error('[FSS] 웹 fallback 실패:', e.message); }
   }
 
   console.log('[FSS] ' + results.length + '건');
