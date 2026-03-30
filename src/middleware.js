@@ -21,10 +21,23 @@ export function middleware(request) {
     return response;
   }
 
-  return new NextResponse(
-    '<html><body style="font-family:sans-serif;display:flex;justify-content:center;align-items:center;height:100vh;background:#F5F6F8"><form style="text-align:center"><h2>규제레이더</h2><p style="color:#666">접근 비밀번호를 입력하세요</p><input name="pw" type="password" style="padding:10px;border:1px solid #ddd;border-radius:6px;font-size:14px;width:200px" placeholder="비밀번호"/><br/><br/><button style="padding:8px 24px;background:#1A56DB;color:white;border:none;border-radius:6px;cursor:pointer">입장</button></form></body></html>',
-    { status: 200, headers: { 'Content-Type': 'text/html' } }
-  );
+  const html = `<!DOCTYPE html>
+<html lang="ko">
+<head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>RegRadar</title></head>
+<body style="font-family:-apple-system,sans-serif;display:flex;justify-content:center;align-items:center;height:100vh;background:#F5F6F8;margin:0">
+<form style="text-align:center">
+<h2 style="color:#162240">RegRadar</h2>
+<p style="color:#666;font-size:14px">Access password required</p>
+<input name="pw" type="password" style="padding:10px;border:1px solid #ddd;border-radius:6px;font-size:14px;width:200px" placeholder="Password"/>
+<br/><br/>
+<button style="padding:8px 24px;background:#1A56DB;color:white;border:none;border-radius:6px;cursor:pointer;font-size:14px">Enter</button>
+</form>
+</body></html>`;
+
+  return new NextResponse(html, { 
+    status: 200, 
+    headers: { 'Content-Type': 'text/html; charset=utf-8' } 
+  });
 }
 
 export const config = {
