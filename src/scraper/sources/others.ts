@@ -30,7 +30,7 @@ export async function scrapeFSC() {
         publishedAt: item.pubDate ? new Date(item.pubDate) : new Date(),
       });
     }
-  } catch(e) {
+  } catch(e: any) {
     console.error('[FSC] korea.kr RSS 실패:', e.message);
 
     // fallback: 금융위 직접 RSS
@@ -48,7 +48,7 @@ export async function scrapeFSC() {
           publishedAt: item2.pubDate ? new Date(item2.pubDate) : new Date(),
         });
       }
-    } catch(e2) { console.error('[FSC] 직접 RSS도 실패:', e2.message); }
+    } catch(e2: any) { console.error('[FSC] 직접 RSS도 실패:', e2.message); }
   }
 
   console.log('[FSC] ' + results.length + '건');
@@ -87,7 +87,7 @@ export async function scrapeBOK() {
         });
       }
       if (results.length > 0) break;
-    } catch(e) { console.log('[BOK] RSS 실패 (' + url.slice(-20) + '): ' + e.message); }
+    } catch(e: any) { console.log('[BOK] RSS 실패 (' + url.slice(-20) + '): ' + e.message); }
   }
 
   // fallback: 웹 크롤링
@@ -110,7 +110,7 @@ export async function scrapeBOK() {
           publishedAt: new Date(),
         });
       }
-    } catch(e) { console.error('[BOK] 웹 fallback 실패:', e.message); }
+    } catch(e: any) { console.error('[BOK] 웹 fallback 실패:', e.message); }
   }
 
   console.log('[BOK] ' + results.length + '건');
@@ -147,7 +147,7 @@ export async function scrapeAssembly() {
         publishedAt: new Date(),
       });
     }
-  } catch(e) {
+  } catch(e: any) {
     console.error('[국회] 스크래핑 실패:', e.message);
   }
 
