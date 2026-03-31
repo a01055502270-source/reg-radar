@@ -1,4 +1,4 @@
-“use client”;
+"use client";
 import { useState, useCallback, useEffect } from “react”;
 
 var T={bg:”#F5F6F8”,surface:”#FFFFFF”,surfaceAlt:”#FAFBFC”,navy:”#162240”,navyLight:”#1E3054”,navyMuted:”#2D4470”,primary:”#1A56DB”,primaryLight:”#E8F0FE”,text:”#1C1F26”,textSec:”#5F6B7A”,textTer:”#98A2B3”,border:”#E2E5EB”,borderL:”#EEF0F4”,red:”#C93B3B”,redBg:”#FEF2F2”,redBd:”#FECACA”,amber:”#B45309”,amberBg:”#FFFBEB”,amberBd:”#FDE68A”,blue:”#1D4ED8”,blueBg:”#EFF6FF”,blueBd:”#BFDBFE”,R:6};
