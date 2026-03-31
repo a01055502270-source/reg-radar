@@ -2,45 +2,45 @@
 import { useState, useCallback, useEffect } from "react";
 
 var T={bg:"#F5F6F8",surface:"#FFFFFF",surfaceAlt:"#FAFBFC",navy:"#162240",navyLight:"#1E3054",navyMuted:"#2D4470",primary:"#1A56DB",primaryLight:"#E8F0FE",text:"#1C1F26",textSec:"#5F6B7A",textTer:"#98A2B3",border:"#E2E5EB",borderL:"#EEF0F4",red:"#C93B3B",redBg:"#FEF2F2",redBd:"#FECACA",amber:"#B45309",amberBg:"#FFFBEB",amberBd:"#FDE68A",blue:"#1D4ED8",blueBg:"#EFF6FF",blueBd:"#BFDBFE",R:6};
-var FN="‘Noto Sans KR’,‘IBM Plex Sans’,-apple-system,sans-serif";
-var MO="‘IBM Plex Mono’,‘SF Mono’,monospace";
+var FN="'Noto Sans KR','IBM Plex Sans',-apple-system,sans-serif";
+var MO="'IBM Plex Mono','SF Mono',monospace";
 
-var SRC_MAP={fss:{name:“금감원",color:T.primary},fsc:{name:“금융위",color:"#6D28D9"},bok:{name:“한은",color:"#0E7490"},na:{name:“국회",color:"#92400E"}};
-var SEV_MAP={critical:{label:“긴급",color:T.red,bg:T.redBg,bd:T.redBd},high:{label:“중요",color:T.amber,bg:T.amberBg,bd:T.amberBd},medium:{label:“참고",color:T.primary,bg:T.primaryLight,bd:T.blueBd},low:{label:“일반",color:T.textTer,bg:T.surfaceAlt,bd:T.borderL}};
-var DEPTS=[“리스크관리부",“여신심사부",“준법감시부",“경영관리부",“자금운용부",“IT기획부",“감사부",“신탁부",“외환부",“소비자보호부"];
+var SRC_MAP={fss:{name:"금감원",color:T.primary},fsc:{name:"금융위",color:"#6D28D9"},bok:{name:"한은",color:"#0E7490"},na:{name:"국회",color:"#92400E"}};
+var SEV_MAP={critical:{label:"긴급",color:T.red,bg:T.redBg,bd:T.redBd},high:{label:"중요",color:T.amber,bg:T.amberBg,bd:T.amberBd},medium:{label:"참고",color:T.primary,bg:T.primaryLight,bd:T.blueBd},low:{label:"일반",color:T.textTer,bg:T.surfaceAlt,bd:T.borderL}};
+var DEPTS=["리스크관리부","여신심사부","준법감시부","경영관리부","자금운용부","IT기획부","감사부","신탁부","외환부","소비자보호부"];
 
-function Badge(props){var x=SEV_MAP[props.s]||SEV_MAP.medium;return <span style={{display:“inline-flex",alignItems:“center",gap:3,padding:“2px 7px",borderRadius:3,fontSize:11,fontWeight:600,color:x.color,background:x.bg,border:“1px solid “+x.bd}}>{“● “+x.label}</span>;}
-function SrcB(props){var s=SRC_MAP[props.id]||{name:"?",color:"#999"};return <span style={{padding:“1px 6px",borderRadius:3,fontSize:10,fontWeight:600,color:s.color,background:s.color+“0C",border:“1px solid “+s.color+“20"}}>{s.name}</span>;}
-function Btn(props){return <button onClick={props.onClick} disabled={props.disabled} style={{display:“inline-flex",alignItems:“center",gap:6,padding:props.small?“5px 10px":“8px 16px",borderRadius:T.R,border:“1px solid",fontSize:props.small?12:13,fontWeight:500,fontFamily:FN,cursor:props.disabled?“default":“pointer",opacity:props.disabled?0.5:1,…(props.primary?{background:T.primary,borderColor:"#1648B8",color:"#fff"}:{background:T.surface,borderColor:T.border,color:T.text}),…(props.style||{})}}>{props.children}</button>;}
+function Badge(props){var x=SEV_MAP[props.s]||SEV_MAP.medium;return <span style={{display:"inline-flex",alignItems:"center",gap:3,padding:"2px 7px",borderRadius:3,fontSize:11,fontWeight:600,color:x.color,background:x.bg,border:"1px solid "+x.bd}}>{"● "+x.label}</span>;}
+function SrcB(props){var s=SRC_MAP[props.id]||{name:"?",color:"#999"};return <span style={{padding:"1px 6px",borderRadius:3,fontSize:10,fontWeight:600,color:s.color,background:s.color+"0C",border:"1px solid "+s.color+"20"}}>{s.name}</span>;}
+function Btn(props){return <button onClick={props.onClick} disabled={props.disabled} style={{display:"inline-flex",alignItems:"center",gap:6,padding:props.small?"5px 10px":"8px 16px",borderRadius:T.R,border:"1px solid",fontSize:props.small?12:13,fontWeight:500,fontFamily:FN,cursor:props.disabled?"default":"pointer",opacity:props.disabled?0.5:1,…(props.primary?{background:T.primary,borderColor:"#1648B8",color:"#fff"}:{background:T.surface,borderColor:T.border,color:T.text}),…(props.style||{})}}>{props.children}</button>;}
 
 function Timer(){
 var ref=useState(0);var s=ref[0];var setS=ref[1];
 useEffect(function(){var t=setInterval(function(){setS(function(v){return v+1;});},1000);return function(){clearInterval(t);};},[]);
-return <div style={{textAlign:“center",padding:“28px 0"}}><div style={{display:“inline-block",width:22,height:22,border:“2.5px solid “+T.borderL,borderTopColor:T.primary,borderRadius:“50%",animation:“spin .8s linear infinite"}}/><p style={{fontSize:13,fontWeight:600,marginTop:10}}>처리 중</p><p style={{fontSize:22,color:T.primary,fontFamily:MO,marginTop:6}}>{s}초</p></div>;
+return <div style={{textAlign:"center",padding:"28px 0"}}><div style={{display:"inline-block",width:22,height:22,border:"2.5px solid "+T.borderL,borderTopColor:T.primary,borderRadius:"50%",animation:"spin .8s linear infinite"}}/><p style={{fontSize:13,fontWeight:600,marginTop:10}}>처리 중</p><p style={{fontSize:22,color:T.primary,fontFamily:MO,marginTop:6}}>{s}초</p></div>;
 }
 
 export default function Page(){
-var pgS=useState(“dashboard");var pg=pgS[0];var setPg=pgS[1];
+var pgS=useState("dashboard");var pg=pgS[0];var setPg=pgS[1];
 var selS=useState(null);var sel=selS[0];var setSel=selS[1];
 var regsS=useState([]);var regs=regsS[0];var setRegs=regsS[1];
 var anaS=useState({});var ana=anaS[0];var setAna=anaS[1];
 var anaingS=useState(null);var anaing=anaingS[0];var setAnaing=anaingS[1];
 var anaErrS=useState({});var anaErr=anaErrS[0];var setAnaErr=anaErrS[1];
-var deptS=useState(“리스크관리부");var dept=deptS[0];var setDept=deptS[1];
+var deptS=useState("리스크관리부");var dept=deptS[0];var setDept=deptS[1];
 var sideS=useState(false);var side=sideS[0];var setSide=sideS[1];
 var rptGenS=useState(false);var rptGen=rptGenS[0];var setRptGen=rptGenS[1];
 var rptS=useState(null);var rpt=rptS[0];var setRpt=rptS[1];
-var rptPS=useState(“2026년 3월");var rptP=rptPS[0];var setRptP=rptPS[1];
+var rptPS=useState("2026년 3월");var rptP=rptPS[0];var setRptP=rptPS[1];
 var mobS=useState(false);var mob=mobS[0];var setMob=mobS[1];
 var loadS=useState(true);var loading=loadS[0];var setLoading=loadS[1];
 // Feed filters
-var sevFS=useState(“all");var sevF=sevFS[0];var setSevF=sevFS[1];
-var srcFS=useState(“all");var srcF=srcFS[0];var setSrcF=srcFS[1];
+var sevFS=useState("all");var sevF=sevFS[0];var setSevF=sevFS[1];
+var srcFS=useState("all");var srcF=srcFS[0];var setSrcF=srcFS[1];
 
 useEffect(function(){
 var c=function(){setMob(window.innerWidth<768);};c();
-window.addEventListener(“resize",c);
-return function(){window.removeEventListener(“resize",c);};
+window.addEventListener("resize",c);
+return function(){window.removeEventListener("resize",c);};
 },[]);
 
 useEffect(function(){
@@ -53,27 +53,27 @@ setLoading(false);
 .catch(function(){setLoading(false);});
 },[]);
 
-var today=new Date().toLocaleDateString(“ko-KR",{year:“numeric",month:“long",day:“numeric",weekday:“long"});
-var crit=regs.filter(function(r){return r.severity===“critical";}).length;
+var today=new Date().toLocaleDateString("ko-KR",{year:"numeric",month:"long",day:"numeric",weekday:"long"});
+var crit=regs.filter(function(r){return r.severity==="critical";}).length;
 var myRegs=regs.filter(function(r){return r.departments&&r.departments.indexOf(dept)>=0;});
 
 // Filtered feed
 var filt=regs.filter(function(r){
-if(sevF!==“all"&&r.severity!==sevF)return false;
-if(srcF!==“all"&&r.source!==srcF)return false;
+if(sevF!=="all"&&r.severity!==sevF)return false;
+if(srcF!=="all"&&r.source!==srcF)return false;
 return true;
 });
 
 // Navigate to feed with filter
 function goFeed(severity,source){
-setSevF(severity||“all");
-setSrcF(source||“all");
-setPg(“feed");
+setSevF(severity||"all");
+setSrcF(source||"all");
+setPg("feed");
 setSel(null);
 setSide(false);
 }
 
-function go(p){setPg(p);setSel(null);setSide(false);setSevF(“all");setSrcF(“all");}
+function go(p){setPg(p);setSel(null);setSide(false);setSevF("all");setSrcF("all");}
 var det=sel?regs.find(function(r){return r.id===sel;}):null;
 var ai=det?ana[det.id]:null;
 var isA=det?(anaing===det.id):false;
@@ -82,7 +82,7 @@ var er=det?anaErr[det.id]:null;
 function doAnalyze(reg){
 setAnaing(reg.id);
 setAnaErr(function(p){var n={};for(var k in p)n[k]=p[k];n[reg.id]=null;return n;});
-fetch("/api/analyze",{method:“POST",headers:{“Content-Type":“application/json"},body:JSON.stringify({regulationId:reg.id})})
+fetch("/api/analyze",{method:"POST",headers:{"Content-Type":"application/json"},body:JSON.stringify({regulationId:reg.id})})
 .then(function(r){return r.json();})
 .then(function(data){
 if(data.error){throw new Error(data.message||data.error);}
@@ -97,19 +97,19 @@ setAnaing(null);
 
 function doReport(){
 setRptGen(true);setRpt(null);
-fetch("/api/report",{method:“POST",headers:{“Content-Type":“application/json"},body:JSON.stringify({department:dept,period:rptP})})
+fetch("/api/report",{method:"POST",headers:{"Content-Type":"application/json"},body:JSON.stringify({department:dept,period:rptP})})
 .then(function(r){return r.json();})
 .then(function(data){
-if(data.error){setRpt(“오류: “+(data.message||data.error));}
-else{setRpt(data.content||“내용 없음");}
+if(data.error){setRpt("오류: "+(data.message||data.error));}
+else{setRpt(data.content||"내용 없음");}
 setRptGen(false);
 })
-.catch(function(e){setRpt(“오류: “+e.message);setRptGen(false);});
+.catch(function(e){setRpt("오류: "+e.message);setRptGen(false);});
 }
 
 return(
-<div style={{display:“flex",minHeight:“100vh",background:T.bg,fontFamily:FN,color:T.text,fontSize:13}}>
-{mob&&side&&<div onClick={function(){setSide(false);}} style={{position:“fixed",inset:0,background:“rgba(0,0,0,.4)",zIndex:90}}/>}
+<div style={{display:"flex",minHeight:"100vh",background:T.bg,fontFamily:FN,color:T.text,fontSize:13}}>
+{mob&&side&&<div onClick={function(){setSide(false);}} style={{position:"fixed",inset:0,background:"rgba(0,0,0,.4)",zIndex:90}}/>}
 
 ```
   {/* Sidebar */}
