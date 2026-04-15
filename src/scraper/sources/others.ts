@@ -18,7 +18,7 @@ export async function scrapeFSC() {
       for (var item of (feed.items || []).slice(0, 20)) {
         var title = (item.title || '').trim();
         if (!title) continue;
-        var kw = ['규정','고시','지침','시행령','법률','개정','제정','예고','감독','모범규준','자본시장','금융소비자','전자금융','여신','금융위'];
+        var kw = ['은행','규정','고시','지침','시행령','법률','개정','제정','예고','감독','모범규준','자본시장','금융소비자','전자금융','여신','금융위'];
         if (!kw.some(function(k: string){return title.indexOf(k)>=0;})) continue;
         var eid = 'fsc-' + Buffer.from(title + (item.pubDate||'')).toString('base64').slice(0,40);
         if (results.some(function(r: any){return r.externalId===eid;})) continue;
