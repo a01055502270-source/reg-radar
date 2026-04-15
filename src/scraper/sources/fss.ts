@@ -21,7 +21,7 @@ export async function scrapeFSS() {
         var title = (item.title || '').trim();
         if (!title) continue;
 
-        var kw = ['감독규정','시행세칙','모범규준','지침','고시','입법예고','개정','제정','시행령','규정변경','완충자본','스트레스','건전성','자본적정','BIS','바젤','금감원'];
+        var kw = ['은행','감독규정','시행세칙','모범규준','지침','고시','입법예고','개정','제정','시행령','규정변경','완충자본','스트레스','건전성','자본적정','BIS','바젤','금감원'];
         if (!kw.some(function(k: string){return title.indexOf(k)>=0;})) continue;
 
         var eid = 'fss-' + Buffer.from(title + (item.pubDate||'')).toString('base64').slice(0,40);
